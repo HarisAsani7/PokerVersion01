@@ -5,7 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
+import java.security.Security;
 import java.util.Scanner;
+
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.SSLSocket;
+
+import com.sun.net.ssl.internal.ssl.Provider;
 
 /**
  * This is a really simple test client: It reads from the scanner, sends to the
@@ -17,13 +24,14 @@ public class TestClient {
 	public static void main(String[] args) {
 		String ipAddress = null;
 		int portNumber = 0;
+		boolean secure = true;
 
 		try (Scanner in = new Scanner(System.in)) {
 			boolean valid = false;
 
 			// Read IP address
 			while (!valid) {
-				System.out.println("Enter a valid IP address");
+				System.out.println("Enter the address of the server");
 				ipAddress = in.nextLine();
 				valid = validateIpAddress(ipAddress);
 			}
@@ -31,45 +39,83 @@ public class TestClient {
 			// Read port number
 			valid = false;
 			while (!valid) {
-				System.out.println("Enter a valid port number");
+				System.out.println("Enter the port number on the server (1024-65535)");
 				String strPort = in.nextLine();
 				valid = validatePortNumber(strPort);
 				if (valid) portNumber = Integer.parseInt(strPort);
 			}
 
-			try (Socket socket = new Socket(ipAddress, portNumber);
-					BufferedReader socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					OutputStreamWriter socketOut = new OutputStreamWriter(socket.getOutputStream())) {
-				// Create thread to read incoming messages
-				Runnable r = new Runnable() {
-					@Override
-					public void run() {
-						while (true) {
-							String msg;
-							try {
-								msg = socketIn.readLine();
-								System.out.println("Received: " + msg);
-							} catch (IOException e) {
-								break;
-							}
-							if (msg==null) break; // In case the server closes the socket
-						}
-					}
-				};
-				Thread t = new Thread(r);
-				t.start();
+			// Read security
+			System.out.println("Enter 'yes' if the client should use SecureSockets");
+			String s = in.nextLine().trim();
+			secure = s.equalsIgnoreCase("yes");
 
-				// Loop, allowing the user to send messages to the server
-				// Note: We still have our scanner
-				System.out.println("Enter commands to server or ctrl-D to quit");
-				while (in.hasNext()) {
-					String line = in.nextLine();
-					socketOut.write(line + "\n");
-					socketOut.flush();
+			Socket socket = null;
+			try {
+				if (secure) {
+					// Registering the JSSE provider
+					Security.addProvider(new Provider());
+					
+					// Specifying the Truststore details. This is needed if you have created a
+					// truststore, for example, for self-signed certificates
+					System.setProperty("javax.net.ssl.trustStore", "truststore.ts");
+					System.setProperty("javax.net.ssl.trustStorePassword", "trustme");
+
+					// Creating Client Sockets
+					SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+					socket = sslsocketfactory.createSocket(ipAddress, portNumber);
+					
+					// The next line is entirely optional !!
+					// The SSL handshake would happen automatically, the first time we send data.
+					// Or we can immediately force the handshaking with this method:
+					((SSLSocket) socket).startHandshake();
+				} else {
+					socket = new Socket(ipAddress, portNumber);
 				}
-			} catch (Exception e) {
+
+				try (BufferedReader socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+						OutputStreamWriter socketOut = new OutputStreamWriter(socket.getOutputStream())) {
+					// Create thread to read incoming messages
+					Runnable r = new Runnable() {
+						@Override
+						public void run() {
+							while (true) {
+								String msg;
+								try {
+									msg = socketIn.readLine();
+									System.out.println("Received: " + msg);
+								} catch (IOException e) {
+									break;
+								}
+								if (msg == null) break; // In case the server closes the socket
+							}
+						}
+					};
+					Thread t = new Thread(r);
+					t.start();
+
+					// Loop, allowing the user to send messages to the server
+					// Note: We still have our scanner
+					System.out.println("Enter commands to server or ctrl-D to quit");
+					while (in.hasNext()) {
+						String line = in.nextLine();
+						socketOut.write(line + "\n");
+						socketOut.flush();
+						System.out.println("Sent: " + line);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+				if (socket != null) try {
+					socket.close();
+				} catch (IOException e) {
+					// we don't care
+				}
 			}
 		}
 	}
@@ -97,7 +143,7 @@ public class TestClient {
 		boolean formatOK = false;
 		try {
 			int portNumber = Integer.parseInt(portText);
-			if (portNumber >= 0 & portNumber <= 65535) {
+			if (portNumber >= 1024 & portNumber <= 65535) {
 				formatOK = true;
 			}
 		} catch (NumberFormatException e) {

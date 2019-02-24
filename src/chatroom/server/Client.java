@@ -26,6 +26,7 @@ public class Client implements Sendable {
 	private Account account = null;
 	private String token = null;
 	private Socket socket;
+	private boolean clientReachable = true;
 	private Instant lastUsage;
 
 	/**
@@ -34,24 +35,6 @@ public class Client implements Sendable {
 	public static void add(Client client) {
 		synchronized (clients) {
 			clients.add(client);
-		}
-	}
-
-	/**
-	 * Close the socket of the given client (ignoring any errors), and remove it
-	 * from our list
-	 */
-	public static void remove(Client client) {
-		try {
-			client.socket.close();
-		} catch (IOException e) {
-			// We don't care about any errors
-		}
-
-		synchronized (clients) {
-			for (Iterator<Client> i = clients.iterator(); i.hasNext();) {
-				if (client == i.next()) i.remove();
-			}
 		}
 	}
 
@@ -77,8 +60,15 @@ public class Client implements Sendable {
 			for (Iterator<Client> i = clients.iterator(); i.hasNext();) {
 				Client client = i.next();
 				if (client.token == null && client.lastUsage.isBefore(expiryLoggedOut)
-						|| client.token != null && client.lastUsage.isBefore(expiryLoggedIn))
+						|| client.token != null && client.lastUsage.isBefore(expiryLoggedIn)) {
+					// Close the socket, ignoring any errors, and remove the client
+					try {
+						if (client.socket != null) client.socket.close();
+					} catch (IOException e) {
+						// We don't care about any errors
+					}
 					i.remove();
+				}
 			}
 		}
 	}
@@ -96,15 +86,16 @@ public class Client implements Sendable {
 			@Override
 			public void run() {
 				try {
-					while (true) {
+					while (clientReachable) {
 						Message msg = Message.receive(socket);
 
 						// Note the syntax "Client.this" - writing "this" would reference the Runnable
 						// object
 						if (msg != null)
 							msg.process(Client.this);
-						else
+						else { // Invalid message or broken socket
 							Client.this.send(new MessageError());
+						}
 
 						lastUsage = Instant.now();
 					}
@@ -136,6 +127,7 @@ public class Client implements Sendable {
 		} catch (IOException e) {
 			logger.warning("Client unreachable; logged out");
 			this.token = null;
+			clientReachable = false;
 		}
 	}
 
