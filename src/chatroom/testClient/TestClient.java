@@ -72,7 +72,7 @@ public class TestClient {
 				} else {
 					socket = new Socket(ipAddress, portNumber);
 				}
-
+				System.out.println("Connected");
 				try (BufferedReader socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 						OutputStreamWriter socketOut = new OutputStreamWriter(socket.getOutputStream())) {
 					// Create thread to read incoming messages
