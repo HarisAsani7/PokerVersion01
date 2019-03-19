@@ -6,6 +6,7 @@ public class Test01 {
 		// TODO Auto-generated method stub
 //du pic gsehsch das jetzt
 		int i = 9;
+		System.out.println("HAHA");
 	}
 
 }
