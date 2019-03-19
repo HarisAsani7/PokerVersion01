@@ -7,7 +7,10 @@ public class Test01 {
 //du pic gsehsch das jetzt
 		int i = 9;
 		System.out.println("HAHA");
-		
+		for(int pic = 0; pic < 9; pic ++) {
+			
+			//drecks program
+		}
 		//hallo, wenn das funktioniert dene hemmer es gschafft
 	}
 
