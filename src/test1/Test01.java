@@ -13,5 +13,8 @@ public class Test01 {
 		}
 		//hallo, wenn das funktioniert dene hemmer es gschafft
 	}
+	
+	int eyDuBastard = 7;
+	
 
 }
