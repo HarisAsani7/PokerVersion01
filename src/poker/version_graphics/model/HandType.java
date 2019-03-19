@@ -84,8 +84,19 @@ public enum HandType {
     }
     
     public static boolean isFourOfAKind(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+    	boolean found = false;
+    	for (int i = 0; i < cards.size() - 1 && !found; i++) {
+            for (int j = i+1; j < cards.size() && !found; j++) {
+            	for (int k = j+1; k < cards.size() && !found; k++) {
+            		 for (int l = k+1; l < cards.size() && !found; l++) {
+            			 if (cards.get(i).getRank() == cards.get(j).getRank() && cards.get(j).getRank() == cards.get(k).getRank() && cards.get(k).getRank() == cards.get(l).getRank()){
+                             found = true;
+            			 }
+            		 }
+                }
+            }
+        }
+        return found;
     }
     
     public static boolean isStraightFlush(ArrayList<Card> cards) {
