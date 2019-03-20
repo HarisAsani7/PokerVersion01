@@ -80,6 +80,7 @@ public enum HandType {
     
     public static boolean isFullHouse(ArrayList<Card> cards) {
     	boolean found = false;
+    	//Stimmt noch nicht
     	// i + j + k three of a kind
     	//l + m one pair
     	for (int i = 0; i < cards.size() - 1 && !found; i++) {
