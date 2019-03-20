@@ -79,8 +79,24 @@ public enum HandType {
     }
     
     public static boolean isFullHouse(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+    	boolean found = false;
+    	// i + j + k three of a kind
+    	//l + m one pair
+    	for (int i = 0; i < cards.size() - 1 && !found; i++) {
+            for (int j = i+1; j < cards.size() && !found; j++) {
+            	for (int k = j+1; k < cards.size() && !found; k++) {
+            		 for (int l = k+1; l < cards.size() && !found; l++) {
+            			 for (int m = l+1; m < cards.size() && !found; m++) {
+            				 if (cards.get(i).getRank() == cards.get(j).getRank() && cards.get(j).getRank() == cards.get(k).getRank() && cards.get(l) == cards.get(m)){
+                                 found = true;
+            				 }
+            			 
+            			 }
+            		 }
+                }
+            }
+        }
+        return found;
     }
     
     public static boolean isFourOfAKind(ArrayList<Card> cards) {

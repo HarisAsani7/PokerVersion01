@@ -48,12 +48,20 @@ public class HandTypeTest {
 			{ "QS", "QC", "QH", "QD", "TH" }
 			};
 	
+	private static String[][] fullHouse = {
+			{ "2S", "2C", "2H", "7D", "7H" },
+			{ "JS", "JC", "JH", "6D", "6H" },
+			{ "5S", "5C", "5H", "7D", "7H" },
+			{ "QS", "QC", "QH", "TD", "TH" }
+			};
+	
 	// This is where we store the translated hands
 	ArrayList<ArrayList<Card>> highCardHands;
 	ArrayList<ArrayList<Card>> pairHands;
 	ArrayList<ArrayList<Card>> twoPairHands;
 	ArrayList<ArrayList<Card>> threeOfAKindHands;
 	ArrayList<ArrayList<Card>> fourOfAKindHands;
+	ArrayList<ArrayList<Card>> fullHouseHands;
 	
 	/**
 	 * The makeHands method is called before each test method,
@@ -67,6 +75,7 @@ public class HandTypeTest {
 		twoPairHands = makeHands(twoPairs);
 		threeOfAKindHands = makeHands(threeOfAKind);
 		fourOfAKindHands = makeHands(fourOfAKind);
+		fullHouseHands = makeHands(fullHouse);
 	}
 
 	/**
@@ -133,6 +142,27 @@ public class HandTypeTest {
 		}
 		for (ArrayList <Card> hand : fourOfAKindHands) {
 			assertTrue(HandType.isFourOfAKind(hand));
+		}
+	}
+	@Test
+	public void testIsFullHouse() {
+		for (ArrayList<Card> hand : highCardHands) {
+			assertFalse(HandType.isFullHouse(hand));
+		}
+		for (ArrayList<Card> hand : pairHands) {
+			assertFalse(HandType.isFullHouse(hand));
+		}
+		for (ArrayList<Card> hand : twoPairHands) {
+			assertFalse(HandType.isFullHouse(hand));
+		}
+		for (ArrayList <Card> hand : threeOfAKindHands) {
+			assertFalse(HandType.isFullHouse(hand));
+		}
+		for (ArrayList <Card> hand : fourOfAKindHands) {
+			assertFalse(HandType.isFullHouse(hand));
+		}
+		for (ArrayList <Card> hand : fullHouseHands) {
+			assertTrue(HandType.isFullHouse(hand));
 		}
 	}
 	
