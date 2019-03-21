@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import poker.version_graphics.model.DeckOfCards;
 
 public class ControlArea extends HBox{
@@ -27,4 +28,6 @@ public class ControlArea extends HBox{
     public void linkDeck(DeckOfCards deck) {
     	lblDeck.setDeck(deck);
     }
+    
+        
 }

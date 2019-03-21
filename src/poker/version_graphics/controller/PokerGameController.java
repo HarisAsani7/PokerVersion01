@@ -3,6 +3,9 @@ package poker.version_graphics.controller;
 import javafx.animation.RotateTransition;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.DeckOfCards;
@@ -21,10 +24,7 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
-		
 	}
-	
-
 
     /**
      * Remove all cards from players hands, and shuffle the deck
@@ -38,6 +38,14 @@ public class PokerGameController {
     	}
 
     	model.getDeck().shuffle();
+    	
+    	DropShadow shadow = new DropShadow();
+    	view.getShuffleButton().setOnMouseEntered(e ->{
+    		view.getShuffleButton().setEffect(shadow);
+    	});
+    	view.getShuffleButton().setOnMouseExited(e ->{
+    		view.getShuffleButton().setEffect(null);
+    	});
     }
     
     /**
@@ -62,6 +70,12 @@ public class PokerGameController {
             Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
             alert.showAndWait();
     	}
-    	
+    	DropShadow shadow = new DropShadow();
+    	view.getDealButton().setOnMouseEntered(e ->{
+    		view.getDealButton().setEffect(shadow);
+    	});
+    	view.getDealButton().setOnMouseExited(e ->{
+    		view.getDealButton().setEffect(null);
+    	});
     }
 }

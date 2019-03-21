@@ -25,7 +25,7 @@ public class CardLabel extends Label {
 			imv.fitHeightProperty().bind(this.heightProperty());
 			imv.setPreserveRatio(true);
 			this.setGraphic(imv);
-			RotateTransition rotation = new RotateTransition(Duration.millis(1000), imv);
+			RotateTransition rotation = new RotateTransition(Duration.millis(800), imv);
 			rotation.setCycleCount(1);
 			imv.setRotationAxis(Rotate.Y_AXIS);
 			rotation.setByAngle(360);

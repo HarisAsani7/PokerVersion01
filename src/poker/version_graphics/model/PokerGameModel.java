@@ -17,7 +17,9 @@ public class PokerGameModel {
 		
 		deck = new DeckOfCards();
 	}
+
 	
+//	ich wird do wahrschienlich e ladescreen hinzuefüege bevor poker überhaupt startet	
 //	final Task<Void> initializer = new Task<Void>() {
 //		protected Void call() throws Exception{
 //			Integer i = 0;
