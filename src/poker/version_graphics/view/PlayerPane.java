@@ -42,6 +42,7 @@ public class PlayerPane extends VBox {
     		if (player.getCards().size() > i) card = player.getCards().get(i);
     		CardLabel cl = (CardLabel) hboxCards.getChildren().get(i);
     		cl.setCard(card);
+    		cl.createRotator(card);
     		HandType evaluation = player.evaluateHand();
     		if (evaluation != null)
     			lblEvaluation.setText(evaluation.toString());

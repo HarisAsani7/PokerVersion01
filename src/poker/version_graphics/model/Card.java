@@ -29,7 +29,7 @@ public class Card {
                 str = "queen";
             } else if (ordinal == 11) { // King
                 str = "king";
-            }
+            } 
             return str;
         }
     };
