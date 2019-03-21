@@ -3,6 +3,37 @@
     -fx-min-width: 200.0;
     -fx-max-width: 2000.0;
   	-fx-alignment: center;
+  	-fx-font-size: 18px;
+  	-fx-font-family: arial;
+  	-fx-font-weight: bold;
+  	
+}
+
+.button{
+	-fx-text-shadow: 2px, 2px, grey;
+	-fx-background-color: white;
+	-fx-font-color: black;
+	-fx-font-weight: bold;
+	
+}
+
+#Shuffle{
+	-fx-background-color: grey;
+	-fx-border-radius: 20px;
+
+	
+}
+
+#Deal{
+	-fx-background-color: white;
+	-fx-border-radius: 20px;	
+	
+}
+
+.stage{
+	-fx-alignment: center;
+	-fx-font-size: 20px;
+	-fx-background-color: rgb(61, 226,255);
 }
 
 #controlArea {
@@ -16,14 +47,16 @@
 	-fx-padding: 5.0px;
     -fx-border-color: black;
     -fx-border-width: 2.0px;
+	-fx-background-image: url(/poker/images/green.jpg);
+    
 }
 
 .card {
-  -fx-font-size: 18px;
+  	-fx-font-size: 18px;
 	-fx-padding: 2.0px;
     -fx-border-color: black;
-    -fx-border-width: 1.0px;
-	-fx-background-color: lemonchiffon;
+    -fx-border-width: 2.0px;
+	-fx-background-color: white;
     -fx-min-width: 50;
     -fx-pref-width: 111;
     -fx-max-width: 500;

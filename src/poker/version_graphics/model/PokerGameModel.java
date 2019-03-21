@@ -2,6 +2,8 @@ package poker.version_graphics.model;
 
 import java.util.ArrayList;
 
+import digitalExamClock.ServiceLocator;
+import javafx.concurrent.Task;
 import poker.version_graphics.PokerGame;
 
 public class PokerGameModel {
@@ -16,6 +18,23 @@ public class PokerGameModel {
 		deck = new DeckOfCards();
 	}
 	
+//	final Task<Void> initializer = new Task<Void>() {
+//		protected Void call() throws Exception{
+//			Integer i = 0;
+//			for (; i<10000000; i++) {
+//				if((i%10000) == 0)
+//					this.updateProgress(i, 100000);
+//			}
+//			
+//			return null;
+//		}
+//	};
+//	
+//	public void initialize() {
+//		new Thred(initializer).start();
+//		
+//	}
+//	
 	public Player getPlayer(int i) {
 		return players.get(i);
 	}

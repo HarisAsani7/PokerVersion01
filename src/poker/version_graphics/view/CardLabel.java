@@ -25,17 +25,22 @@ public class CardLabel extends Label {
 			imv.fitHeightProperty().bind(this.heightProperty());
 			imv.setPreserveRatio(true);
 			this.setGraphic(imv);
-			RotateTransition rotation = new RotateTransition(Duration.millis(2000), imv);
+			RotateTransition rotation = new RotateTransition(Duration.millis(1000), imv);
 			rotation.setCycleCount(1);
 			imv.setRotationAxis(Rotate.Y_AXIS);
 			rotation.setByAngle(360);
 			rotation.setInterpolator(Interpolator.LINEAR);
 			imv.setTranslateZ(imv.getBoundsInLocal().getWidth() / 2);
 			rotation.play();
-			imv.setRotate(180);
-			
 		} else {
-			this.setGraphic(null);
+//			this.setGraphic(null);
+			Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/balr-logo.png"));
+			ImageView imv = new ImageView(image);
+			imv.fitWidthProperty().bind(this.widthProperty());
+			imv.fitHeightProperty().bind(this.heightProperty());
+			imv.setPreserveRatio(true);
+			this.setGraphic(imv);
+			
 		}
 	}
 	

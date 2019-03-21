@@ -1,13 +1,18 @@
 package poker.version_graphics.view;
 
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import poker.version_graphics.PokerGame;
+import poker.version_graphics.model.Card;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
@@ -25,7 +30,10 @@ public class PokerGameView {
 			PlayerPane pp = new PlayerPane();
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
+			
 		}
+		
+		
 		
 		// Create the control area
 		controls = new ControlArea();
@@ -47,7 +55,9 @@ public class PokerGameView {
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Miniproject");
         stage.setScene(scene);
-        stage.show();		
+        stage.show();
+        
+        
 	}
 	
 	public PlayerPane getPlayerPane(int i) {
@@ -61,4 +71,5 @@ public class PokerGameView {
 	public Button getDealButton() {
 		return controls.btnDeal;
 	}
+	
 }

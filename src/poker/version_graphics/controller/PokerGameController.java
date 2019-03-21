@@ -1,5 +1,6 @@
 package poker.version_graphics.controller;
 
+import javafx.animation.RotateTransition;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import poker.version_graphics.PokerGame;
@@ -20,6 +21,7 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
+		
 	}
 	
 
