@@ -25,21 +25,20 @@ public class CardLabel extends Label {
 			imv.fitHeightProperty().bind(this.heightProperty());
 			imv.setPreserveRatio(true);
 			this.setGraphic(imv);
+			RotateTransition rotation = new RotateTransition(Duration.millis(2000), imv);
+			rotation.setCycleCount(1);
+			imv.setRotationAxis(Rotate.Y_AXIS);
+			rotation.setByAngle(360);
+			rotation.setInterpolator(Interpolator.LINEAR);
+			imv.setTranslateZ(imv.getBoundsInLocal().getWidth() / 2);
+			rotation.play();
+			imv.setRotate(180);
+			
 		} else {
 			this.setGraphic(null);
 		}
 	}
 	
-	public RotateTransition createRotator(Card card) {
-        RotateTransition rotator = new RotateTransition(Duration.millis(2000));
-        rotator.setAxis(Rotate.Y_AXIS);
-        rotator.setFromAngle(0);
-        rotator.setToAngle(360);
-        rotator.setInterpolator(Interpolator.LINEAR);
-        rotator.setCycleCount(10);
-
-        return rotator;
-    }
 
 	private String cardToFileName(Card card) {
 		String rank = card.getRank().toString();
