@@ -79,25 +79,22 @@ public enum HandType {
     }
     
     public static boolean isFullHouse(ArrayList<Card> cards) {
-    	boolean found = false;
-    	//Stimmt noch nicht
-    	// i + j + k three of a kind
-    	//l + m one pair
-    	for (int i = 0; i < cards.size() - 1 && !found; i++) {
-            for (int j = i+1; j < cards.size() && !found; j++) {
-            	for (int k = j+1; k < cards.size() && !found; k++) {
-            		 for (int l = k+1; l < cards.size() && !found; l++) {
-            			 for (int m = l+1; m < cards.size() && !found; m++) {
-            				 if (cards.get(i).getRank() == cards.get(j).getRank() && cards.get(j).getRank() == cards.get(k).getRank() && cards.get(l) == cards.get(m)){
-                                 found = true;
-            				 }
-            			 
-            			 }
+ 
+    	 ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+         boolean threeOfAKindFound = false;
+         for (int i = 0; i < clonedCards.size() - 1 && !threeOfAKindFound; i++) {
+             for (int j = i+1; j < clonedCards.size() && !threeOfAKindFound; j++) {
+            	 for (int k = j+1; k < clonedCards.size() && !threeOfAKindFound; k++) {
+            		 if (clonedCards.get(i).getRank() == clonedCards.get(j).getRank() && clonedCards.get(j).getRank() == clonedCards.get(k).getRank()) {
+            			 threeOfAKindFound = true;
+                         clonedCards.remove(k);  
+                         clonedCards.remove(j);
+                         clonedCards.remove(i);
             		 }
-                }
-            }
-        }
-        return found;
+            	 }
+             }
+         }
+         return threeOfAKindFound && isOnePair(clonedCards);
     }
     
     public static boolean isFourOfAKind(ArrayList<Card> cards) {

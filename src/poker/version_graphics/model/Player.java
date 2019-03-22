@@ -22,7 +22,13 @@ public class Player implements Comparable<Player> {
     }
     
     public void addCard(Card card) {
-        if (cards.size() < HAND_SIZE) cards.add(card);
+    if (cards.size() < HAND_SIZE) cards.add(card);
+    //fullhouse test
+  	/*if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Ace)); // is also a method to check if it shows the right evaluation
+   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Diamonds, Card.Rank.Ace));
+   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Ace));
+   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Jack));
+   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Jack));*/
     }
     
     public void discardHand() {
