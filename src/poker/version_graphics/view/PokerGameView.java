@@ -1,5 +1,7 @@
 package poker.version_graphics.view;
 
+import java.awt.Label;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -8,17 +10,34 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
+import poker.version_graphics.model.Player;
 import poker.version_graphics.model.PokerGameModel;
+import poker.version_graphics.view.*;
 
 public class PokerGameView {
 	private HBox players;
 	private ControlArea controls;
+	public Label lblWinner = new Label("");
 	
 	private PokerGameModel model;
-	
+//	Who wins? (not finished)
+//	public void evaluateWinner() {
+//		Player winner = model.getPlayer(0);
+//		Player currentWinner = model.getPlayer(0);
+//		for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+//			if (currentWinner.compareTo(model.getPlayer(i)) < 0) {
+//				currentWinner = model.getPlayer(0);
+//				lblWinner.setText(model.getPlayer(i) + " lost");
+//				
+//			} else {
+//				winner = currentWinner;
+//				lblWinner.setText(model.getPlayer(i) + " wins");
+//			}
+//		}    	
+//	}
 	public PokerGameView(Stage stage, PokerGameModel model) {
 		this.model = model;
-		
+		this.lblWinner = lblWinner;
 		// Create all of the player panes we need, and put them into an HBox
 		players = new HBox();
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
@@ -26,6 +45,7 @@ public class PokerGameView {
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
 		}
+		
 		
 		// Create the control area
 		controls = new ControlArea();
@@ -49,8 +69,8 @@ public class PokerGameView {
         stage.setScene(scene);
         stage.show();		
 	}
-	
-	public PlayerPane getPlayerPane(int i) {
+
+	public PlayerPane getPlayerPane(int i) {	
 		return (PlayerPane) players.getChildren().get(i);
 	}
 	
@@ -59,6 +79,7 @@ public class PokerGameView {
 	}
 	
 	public Button getDealButton() {
-		return controls.btnDeal;
+		return controls.btnDeal; 
+ 
 	}
 }

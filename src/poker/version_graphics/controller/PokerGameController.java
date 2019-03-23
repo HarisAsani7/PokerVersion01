@@ -21,7 +21,7 @@ public class PokerGameController {
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
 	}
-	
+
 
 
     /**

@@ -69,8 +69,18 @@ public enum HandType {
     }
     
     public static boolean isStraight(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	boolean straight = false;
+    	for(int i = 0; i < clonedCards.size()-1 && !straight; i++) {
+    		for(int j = i+1; j < clonedCards.size()-1 && !straight; j++) {
+    			if (clonedCards.get(i+1).getRank() == clonedCards.get(j).getRank()) {
+    				//Not finished pic
+    			}
+    		}
+    		
+    	}
+    	
+        return straight;
     }
     
     public static boolean isFlush(ArrayList<Card> cards) {
