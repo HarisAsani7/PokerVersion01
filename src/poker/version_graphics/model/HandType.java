@@ -1,6 +1,8 @@
 package poker.version_graphics.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public enum HandType {
     HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush;
@@ -69,8 +71,30 @@ public enum HandType {
     }
     
     public static boolean isStraight(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+    	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+    	//Collections.sort(clonedCards);
+    	boolean straight = false;
+    	for(int i = 0; i < clonedCards.size()-1 && !straight; i++) {
+    		for(int j = i+1; j < clonedCards.size() && !straight; j++) {
+    			for(int k = j+1 ; k < clonedCards.size() && !straight; k++) {
+    				for(int l = k+1; l < clonedCards.size() && !straight; l++) {
+    					for(int m = l+1; m < clonedCards.size() && !straight; m++) {
+    						if (cards.get(i).getRank() == cards.get(j +1).getRank() && cards.get(j).getRank() == cards.get(k +1).getRank() && cards.get(k).getRank() == cards.get(l+1).getRank() && cards.get(l).getRank() == cards.get(m+1).getRank()) {
+    							straight = true;
+    							clonedCards.remove(m);
+    							clonedCards.remove(l);
+    							clonedCards.remove(k);  
+    	                        clonedCards.remove(j);
+    	                        clonedCards.remove(i);	
+    						}
+    					}
+    				}
+    			}
+    		}
+    		
+    	}
+    	
+        return straight;
     }
     
     public static boolean isFlush(ArrayList<Card> cards) {
@@ -79,25 +103,22 @@ public enum HandType {
     }
     
     public static boolean isFullHouse(ArrayList<Card> cards) {
-    	boolean found = false;
-    	//Stimmt noch nicht
-    	// i + j + k three of a kind
-    	//l + m one pair
-    	for (int i = 0; i < cards.size() - 1 && !found; i++) {
-            for (int j = i+1; j < cards.size() && !found; j++) {
-            	for (int k = j+1; k < cards.size() && !found; k++) {
-            		 for (int l = k+1; l < cards.size() && !found; l++) {
-            			 for (int m = l+1; m < cards.size() && !found; m++) {
-            				 if (cards.get(i).getRank() == cards.get(j).getRank() && cards.get(j).getRank() == cards.get(k).getRank() && cards.get(l) == cards.get(m)){
-                                 found = true;
-            				 }
-            			 
-            			 }
+ 
+    	 ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
+         boolean threeOfAKindFound = false;
+         for (int i = 0; i < clonedCards.size() - 1 && !threeOfAKindFound; i++) {
+             for (int j = i+1; j < clonedCards.size() && !threeOfAKindFound; j++) {
+            	 for (int k = j+1; k < clonedCards.size() && !threeOfAKindFound; k++) {
+            		 if (clonedCards.get(i).getRank() == clonedCards.get(j).getRank() && clonedCards.get(j).getRank() == clonedCards.get(k).getRank()) {
+            			 threeOfAKindFound = true;
+                         clonedCards.remove(k);  
+                         clonedCards.remove(j);
+                         clonedCards.remove(i);
             		 }
-                }
-            }
-        }
-        return found;
+            	 }
+             }
+         }
+         return threeOfAKindFound && isOnePair(clonedCards);
     }
     
     public static boolean isFourOfAKind(ArrayList<Card> cards) {
