@@ -41,7 +41,7 @@ public class CardLabel extends Label {
 			imv.setPreserveRatio(true);
 			this.setGraphic(imv);
 			//bro das muesch gseh
-			
+		//test	
 		}
 	}
 	
