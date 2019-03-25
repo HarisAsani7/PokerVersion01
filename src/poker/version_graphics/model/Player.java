@@ -22,14 +22,32 @@ public class Player implements Comparable<Player> {
     }
     
     public void addCard(Card card) {
-    if (cards.size() < HAND_SIZE) cards.add(card);
-    //fullhouse test
-  	/*if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Ace)); // is also a method to check if it shows the right evaluation
-   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Diamonds, Card.Rank.Ace));
-   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Ace));
-   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Jack));
-   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Jack));*/
-    }
+    	if (cards.size() < HAND_SIZE) cards.add(card);
+    //fullhouse test working
+//  	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Ace)); // is also a method to check if it shows the right evaluation
+//   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Diamonds, Card.Rank.Ace));
+//   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Ace));
+//   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Jack));
+//   	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Jack));
+//    //flush test works
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Nine));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Six));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Queen));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Jack));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Five));
+//	//straight test working
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Nine));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Diamonds, Card.Rank.Ten));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Jack));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Diamonds, Card.Rank.Queen));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Spades, Card.Rank.King));
+//	//Straightflush test
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Nine));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Six));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Seven));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Eight));
+//	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Five));   
+}
     
     public void discardHand() {
         cards.clear();

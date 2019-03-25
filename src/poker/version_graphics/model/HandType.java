@@ -72,15 +72,34 @@ public enum HandType {
     
     public static boolean isStraight(ArrayList<Card> cards) {
     	ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
-    	//Collections.sort(clonedCards);
+    	clonedCards.sort(Comparator.comparing(Card::getRank));
+    	
     	boolean straight = false;
+    	int counter = 0;
     	for(int i = 0; i < clonedCards.size()-1 && !straight; i++) {
-    		for(int j = i+1; j < clonedCards.size() && !straight; j++) {
-    			for(int k = j+1 ; k < clonedCards.size() && !straight; k++) {
-    				for(int l = k+1; l < clonedCards.size() && !straight; l++) {
-    					for(int m = l+1; m < clonedCards.size() && !straight; m++) {
-    						if (cards.get(i).getRank() == cards.get(j +1).getRank() && cards.get(j).getRank() == cards.get(k +1).getRank() && cards.get(k).getRank() == cards.get(l+1).getRank() && cards.get(l).getRank() == cards.get(m+1).getRank()) {
-    							straight = true;
+    		if(clonedCards.get(i).getRank().compareTo(clonedCards.get(i+1).getRank()) ==-1) {
+    			counter++;
+    			if(counter == 4) {
+    				straight = true;
+    			}
+    		}
+    		
+    	}
+    	
+        return straight;
+    }
+    
+    public static boolean isFlush(ArrayList<Card> cards) {
+        ArrayList<Card> clonedCards = (ArrayList <Card>) cards.clone();
+        
+        boolean flush = false;
+    	for(int i = 0; i < clonedCards.size()-1 && !flush; i++) {
+    		for(int j = i+1; j < clonedCards.size() && !flush; j++) {
+    			for(int k = j+1 ; k < clonedCards.size() && !flush; k++) {
+    				for(int l = k+1; l < clonedCards.size() && !flush; l++) {
+    					for(int m = l+1; m < clonedCards.size() && !flush; m++) {
+    						if (clonedCards.get(i).getSuit() == clonedCards.get(j).getSuit() && clonedCards.get(j).getSuit() == clonedCards.get(k).getSuit() && clonedCards.get(k).getSuit() == clonedCards.get(l).getSuit() && clonedCards.get(l).getSuit() == clonedCards.get(m).getSuit()) {
+    							flush = true;
     							clonedCards.remove(m);
     							clonedCards.remove(l);
     							clonedCards.remove(k);  
@@ -91,15 +110,8 @@ public enum HandType {
     				}
     			}
     		}
-    		
     	}
-    	
-        return straight;
-    }
-    
-    public static boolean isFlush(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+    	return flush;
     }
     
     public static boolean isFullHouse(ArrayList<Card> cards) {
@@ -138,7 +150,12 @@ public enum HandType {
     }
     
     public static boolean isStraightFlush(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+        ArrayList<Card> clonedCards = (ArrayList <Card>) cards.clone();
+        
+        boolean straightflush = false;
+    	if(HandType.isFlush(clonedCards) && HandType.isStraight(clonedCards)) {
+    		straightflush = true;
+    	}
+    	return straightflush;       
     }
 }
