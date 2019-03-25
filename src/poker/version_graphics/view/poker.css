@@ -1,7 +1,7 @@
 .label {
 	-fx-padding: 5.0px;
-    	-fx-min-width: 200.0;
-    	-fx-max-width: 2000.0;
+    -fx-min-width: 200.0;
+    -fx-max-width: 2000.0;
   	-fx-alignment: center;
   	-fx-font-size: 18px;
   	-fx-font-family: arial;
@@ -15,7 +15,7 @@
 	-fx-background-color: white;
 	-fx-font-color: black;
 	-fx-font-weight: bold;
-	
+		
 }
 
 .menu-bar{
@@ -25,14 +25,20 @@
 	-fx-pref-height: 30px;
 }
 
+#winner{
+	-fx-alignment: bottom_center;
+	-fx-background-color: white;
+	-fx-text-fill: black;
+	-fx-padding: 5.0px;
+	-fx-pref-height: 30px;
+}
+
 .menu{
 	-fx-min-height: 30px;
 	-fx-max-height: 40px;
 	-fx-pref-height: 30px;
-	
 	-fx-padding: 0px;
 	-fx-border-width: 0px;
-	
 }
 
 .menu .label{
@@ -51,15 +57,12 @@
 
 #Shuffle:hover{
 	-fx-background-color: grey;
-	-fx-border-radius: 20px;
-
-	
+	-fx-border-radius: 20px;	
 }
 
 #Deal:hover{
 	-fx-background-color: grey;
 	-fx-border-radius: 20px;	
-	
 }
 
 .stage{
@@ -69,7 +72,7 @@
 }
 
 #controlArea {
-    -fx-spacing: 15.0px;
+    -fx-spacing: 0.0px;
     -fx-padding: 5.0px;
     -fx-border-color: black;
     -fx-border-width: 2.0px;

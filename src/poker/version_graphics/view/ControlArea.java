@@ -1,7 +1,7 @@
 package poker.version_graphics.view;
 
 import javafx.scene.control.Label;
-
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -15,18 +15,22 @@ public class ControlArea extends HBox{
     Button btnShuffle = new Button("Shuffle");
     Button btnDeal = new Button("Deal");
     Label text = new Label("Remaining Cards: ");
+    Label winner = new Label("Winner: ");
     
     public ControlArea() {
     	super(); // Always call super-constructor first !!
     	
-    	this.getChildren().addAll(text, lblDeck, spacer, btnShuffle, btnDeal);
+    	this.getChildren().addAll(text, lblDeck, winner, spacer, btnShuffle, btnDeal);
+    	spacer.setId("spacer");
     	text.setId("textCards");
+    	winner.setId("winner");
     	lblDeck.setId("cardDeck");
     	btnDeal.setId("Deal");
     	btnShuffle.setId("Shuffle");
 
         HBox.setHgrow(spacer, Priority.ALWAYS); // Use region to absorb resizing
-        this.setId("controlArea"); // Unique ID in the CSS
+        //HBox.setMargin(spacer, new Insets(10));
+    	this.setId("controlArea"); // Unique ID in the CSS
     }
     
     public void linkDeck(DeckOfCards deck) {
