@@ -33,8 +33,6 @@ public class PokerGameView {
 			
 		}
 		
-		
-		
 		// Create the control area
 		controls = new ControlArea();
 		controls.linkDeck(model.getDeck()); // link DeckLabel to DeckOfCards in the logic
@@ -43,8 +41,6 @@ public class PokerGameView {
 		BorderPane root = new BorderPane();
 		root.setCenter(players);
 		root.setBottom(controls);
-		
-		
 		
 		// Disallow resizing - which is difficult to get right with images
 		stage.setResizable(false);

@@ -13,7 +13,6 @@ public class ControlArea extends HBox{
     Button btnShuffle = new Button("Shuffle");
     Button btnDeal = new Button("Deal");
     
-
     public ControlArea() {
     	super(); // Always call super-constructor first !!
     	
@@ -27,7 +26,5 @@ public class ControlArea extends HBox{
     
     public void linkDeck(DeckOfCards deck) {
     	lblDeck.setDeck(deck);
-    }
-    
-        
+    }      
 }
