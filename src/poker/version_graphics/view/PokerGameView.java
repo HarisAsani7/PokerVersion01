@@ -56,7 +56,6 @@ public class PokerGameView {
 			
 		}
 		
-		
 		MenuBar menuBar = new MenuBar();
 		Menu setPlayer = new Menu("Player");
 		final int maxPlayer = 10;
