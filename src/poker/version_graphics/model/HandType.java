@@ -35,7 +35,7 @@ public enum HandType {
         }
         return found;
     }
-    
+    //OUI
     public static boolean isTwoPair(ArrayList<Card> cards) {
         // Clone the cards, because we will be altering the list
         ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
