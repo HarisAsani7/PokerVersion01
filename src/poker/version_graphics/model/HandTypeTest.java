@@ -39,7 +39,7 @@ public class HandTypeTest {
 			{ "AS", "AC", "AH", "5D", "3H" },
 			{ "3S", "3C", "3H", "2D", "QH" },
 			{ "QS", "QC", "QH", "5D", "5H" }
-	};
+			};
 	
 	private static String[][] fourOfAKind = {
 			{ "2S", "2C", "2H", "2D", "7H" },
@@ -54,11 +54,18 @@ public class HandTypeTest {
 			{ "5S", "5C", "5H", "8D", "8H" },
 			{ "QS", "QC", "QH", "TD", "TH" }
 			};
+	
 	private static String[][] straight = {
 			{ "2S", "3C", "4H", "5D", "6H" },
 			{ "8S", "9C", "TH", "JD", "QH" },
 			{ "5S", "6C", "7H", "8D", "9H" },
 			{ "TS", "JC", "QH", "KD", "AH" }
+			};
+	private static String[][] flush = {
+			{ "2S", "9S", "3S", "5S", "7S" },
+			{ "7H", "5H", "AH", "JH", "6H" },
+			{ "2S", "3S", "4S", "5S", "7S" },
+			{ "AD", "8D", "QD", "JD", "TD" }
 			};
 	
 	// This is where we store the translated hands
@@ -69,6 +76,7 @@ public class HandTypeTest {
 	ArrayList<ArrayList<Card>> fourOfAKindHands;
 	ArrayList<ArrayList<Card>> fullHouseHands;
 	ArrayList<ArrayList<Card>> straightHands;
+	ArrayList<ArrayList<Card>> flushHands;
 	
 	/**
 	 * The makeHands method is called before each test method,
@@ -84,6 +92,7 @@ public class HandTypeTest {
 		fourOfAKindHands = makeHands(fourOfAKind);
 		fullHouseHands = makeHands(fullHouse);
 		straightHands = makeHands(straight);
+		flushHands = makeHands(flush);
 	}
 
 	/**
@@ -195,6 +204,33 @@ public class HandTypeTest {
 		}
 		for (ArrayList <Card> hand : straightHands) {
 			assertTrue(HandType.isStraight(hand));
+		}
+	}
+	@Test
+	public void testIsFlush() {
+		for (ArrayList<Card> hand : highCardHands) {
+			assertFalse(HandType.isFlush(hand));
+		}
+		for (ArrayList<Card> hand : pairHands) {
+			assertFalse(HandType.isFlush(hand));
+		}
+		for (ArrayList<Card> hand : twoPairHands) {
+			assertFalse(HandType.isFlush(hand));
+		}
+		for (ArrayList <Card> hand : threeOfAKindHands) {
+			assertFalse(HandType.isFlush(hand));
+		}
+		for (ArrayList <Card> hand : fourOfAKindHands) {
+			assertFalse(HandType.isFlush(hand));
+		}
+		for (ArrayList <Card> hand : fullHouseHands) {
+			assertFalse(HandType.isFlush(hand));
+		}
+		for (ArrayList <Card> hand : straightHands) {
+			assertFalse(HandType.isFlush(hand));
+		}
+		for (ArrayList <Card> hand : flushHands) {
+			assertTrue(HandType.isFlush(hand));
 		}
 	}
 	
