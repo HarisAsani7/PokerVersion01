@@ -18,6 +18,37 @@
 	
 }
 
+.menu-bar{
+	-fx-background-color: white;
+	-fx-min-height: 30px;
+	-fx-max-height: 40px;
+	-fx-pref-height: 30px;
+}
+
+.menu{
+	-fx-min-height: 30px;
+	-fx-max-height: 40px;
+	-fx-pref-height: 30px;
+	
+	-fx-padding: 0px;
+	-fx-border-width: 0px;
+	
+}
+
+.menu .label{
+	-fx-text-fill: black;
+	-fx-font-size: 15px;
+	-fx-font-weight: bold;
+	-fx-padding: 0px;
+}
+
+.menu:hover{
+	-fx-background-color: lightgrey;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font-size: 16px;
+}
+
 #Shuffle:hover{
 	-fx-background-color: grey;
 	-fx-border-radius: 20px;
@@ -42,6 +73,11 @@
     -fx-padding: 5.0px;
     -fx-border-color: black;
     -fx-border-width: 2.0px;
+    -fx-text-fill: black;
+}
+
+#cardDeck{
+	-fx-text-fill: black;
 }
 
 .player {

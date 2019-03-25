@@ -7,6 +7,9 @@ import javafx.animation.RotateTransition;
 import java.awt.Label;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -54,6 +57,13 @@ public class PokerGameView {
 		}
 		
 		
+		MenuBar menuBar = new MenuBar();
+		Menu setPlayer = new Menu("Player");
+		MenuItem chosePlayer = new MenuItem("Chose Player");
+		setPlayer.getItems().add(chosePlayer);
+		Menu cardDeck = new Menu("Cards");
+		menuBar.getMenus().addAll(setPlayer, cardDeck);
+		
 		// Create the control area
 		controls = new ControlArea();
 		controls.linkDeck(model.getDeck()); // link DeckLabel to DeckOfCards in the logic
@@ -62,6 +72,7 @@ public class PokerGameView {
 		BorderPane root = new BorderPane();
 		root.setCenter(players);
 		root.setBottom(controls);
+		root.setTop(menuBar);
 		
 		// Disallow resizing - which is difficult to get right with images
 		stage.setResizable(false);

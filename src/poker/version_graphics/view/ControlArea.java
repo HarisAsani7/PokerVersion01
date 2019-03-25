@@ -1,5 +1,7 @@
 package poker.version_graphics.view;
 
+import java.awt.Label;
+
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -17,6 +19,7 @@ public class ControlArea extends HBox{
     	super(); // Always call super-constructor first !!
     	
     	this.getChildren().addAll(lblDeck, spacer, btnShuffle, btnDeal);
+    	lblDeck.setId("cardDeck");
     	btnDeal.setId("Deal");
     	btnShuffle.setId("Shuffle");
 
