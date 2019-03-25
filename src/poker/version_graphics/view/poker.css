@@ -18,15 +18,15 @@
 	
 }
 
-#Shuffle{
+#Shuffle:hover{
 	-fx-background-color: grey;
 	-fx-border-radius: 20px;
 
 	
 }
 
-#Deal{
-	-fx-background-color: white;
+#Deal:hover{
+	-fx-background-color: grey;
 	-fx-border-radius: 20px;	
 	
 }
