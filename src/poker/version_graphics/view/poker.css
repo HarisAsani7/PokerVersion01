@@ -80,6 +80,12 @@
 	-fx-text-fill: black;
 }
 
+#textCards{
+	-fx-padding: 5.0px;
+	-fx-alingment: left;
+	-fx-text-fill: black;
+}
+
 .player {
 	-fx-padding: 5.0px;
     -fx-border-color: black;

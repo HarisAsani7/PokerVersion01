@@ -1,6 +1,6 @@
 package poker.version_graphics.view;
 
-import java.awt.Label;
+import javafx.scene.control.Label;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -14,11 +14,13 @@ public class ControlArea extends HBox{
     private Region spacer = new Region(); // Empty spacer
     Button btnShuffle = new Button("Shuffle");
     Button btnDeal = new Button("Deal");
+    Label text = new Label("Remaining Cards: ");
     
     public ControlArea() {
     	super(); // Always call super-constructor first !!
     	
-    	this.getChildren().addAll(lblDeck, spacer, btnShuffle, btnDeal);
+    	this.getChildren().addAll(text, lblDeck, spacer, btnShuffle, btnDeal);
+    	text.setId("textCards");
     	lblDeck.setId("cardDeck");
     	btnDeal.setId("Deal");
     	btnShuffle.setId("Shuffle");
