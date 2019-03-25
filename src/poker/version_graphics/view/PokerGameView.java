@@ -59,9 +59,19 @@ public class PokerGameView {
 		
 		MenuBar menuBar = new MenuBar();
 		Menu setPlayer = new Menu("Player");
-		MenuItem chosePlayer = new MenuItem("Chose Player");
+		final int maxPlayer = 10;
+		final int maxCards = 4;
+		for (int i = 1; i <=maxPlayer; i++) {
+		MenuItem chosePlayer = new MenuItem("Player " + i);
 		setPlayer.getItems().add(chosePlayer);
-		Menu cardDeck = new Menu("Cards");
+		}
+		Menu cardDeck = new Menu("Cardstyle");
+		for (int i = 1; i <= maxCards; i++) {
+			MenuItem choseCards = new MenuItem("Cardstyle " + i);
+			cardDeck.getItems().add(choseCards);
+		}
+		
+		
 		menuBar.getMenus().addAll(setPlayer, cardDeck);
 		
 		// Create the control area
