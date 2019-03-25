@@ -69,9 +69,16 @@ public class PokerGameView {
 			MenuItem choseCards = new MenuItem("Cardstyle " + i);
 			cardDeck.getItems().add(choseCards);
 		}
+		Menu info = new Menu ("Options");
+		MenuItem exit = new MenuItem("Exit Game");
+		MenuItem infoCards = new MenuItem("Card explained");
+		info.getItems().addAll(exit, infoCards);
 		
+		exit.setOnAction(e ->{
+			System.exit(0);
+		});
 		
-		menuBar.getMenus().addAll(setPlayer, cardDeck);
+		menuBar.getMenus().addAll(setPlayer, cardDeck, info);
 		
 		// Create the control area
 		controls = new ControlArea();
