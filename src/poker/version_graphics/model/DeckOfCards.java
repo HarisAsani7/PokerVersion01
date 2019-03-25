@@ -2,6 +2,7 @@ package poker.version_graphics.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 import javafx.beans.property.SimpleIntegerProperty;
 
