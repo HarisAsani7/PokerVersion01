@@ -5,9 +5,9 @@ import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.application.Preloader.ProgressNotification;
 
-import java.awt.Label;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -47,24 +47,9 @@ public class PokerGameView {
 	}
 
 	private PokerGameModel model;
-//	Who wins? (not finished)
-//	public void evaluateWinner() {
-//		Player winner = model.getPlayer(0);
-//		Player currentWinner = model.getPlayer(0);
-//		for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-//			if (currentWinner.compareTo(model.getPlayer(i)) < 0) {
-//				currentWinner = model.getPlayer(0);
-//				lblWinner.setText(model.getPlayer(i) + " lost");
-//				
-//			} else {
-//				winner = currentWinner;
-//				lblWinner.setText(model.getPlayer(i) + " wins");
-//			}
-//		}    	
-//	}
+	
 	public PokerGameView(Stage stage, PokerGameModel model) {
 		this.model = model;
-		this.lblWinner = lblWinner;
 		// Create all of the player panes we need, and put them into an HBox
 		players = new HBox();
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
@@ -90,7 +75,8 @@ public class PokerGameView {
 		Menu info = new Menu ("Options");
 		MenuItem exit = new MenuItem("Exit Game");
 		MenuItem infoCards = new MenuItem("Card explained");
-		info.getItems().addAll(exit, infoCards);
+		MenuItem statistics = new MenuItem("Statistics");
+		info.getItems().addAll(exit, infoCards, statistics);
 		
 		exit.setOnAction(e ->{
 			System.exit(0);
@@ -141,5 +127,9 @@ public class PokerGameView {
 	
 	public Stage getMyStage () {
 		return myStage;
+	}
+	public Label getWinnerLabel() {
+		return controls.winner;
+		
 	}
 }

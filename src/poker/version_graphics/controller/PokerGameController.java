@@ -33,6 +33,8 @@ public class PokerGameController {
      * Remove all cards from players hands, and shuffle the deck
      */
     private void shuffle() {
+    	view.getWinnerLabel().setText("Winner: ");
+    	view.getDealButton().setDisable(false);
     	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
     		Player p = model.getPlayer(i);
     		p.discardHand();
@@ -57,6 +59,13 @@ public class PokerGameController {
     private void deal() {
     	int cardsRequired = PokerGame.NUM_PLAYERS * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
+//    	Player winner = model.getPlayer(0);
+//    	Player currentWinner = model.getPlayer(0);
+//    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+//    		model.getPlayer(i).evaluateHand().compareTo(model.getPlayer(i+1).evaluateHand());
+//    		
+//    	}
+    	view.getWinnerLabel().setText("Winner: Eren Aslan");
     	if (cardsRequired <= deck.getCardsRemaining()) {
         	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
         		Player p = model.getPlayer(i);
@@ -70,8 +79,9 @@ public class PokerGameController {
         		pp.updatePlayerDisplay();
         	}
     	} else {
-            Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
-            alert.showAndWait();
+    			view.getDealButton().setDisable(true);
+//            Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
+//            alert.showAndWait();
     	}
     	DropShadow shadow = new DropShadow();
     	view.getDealButton().setOnMouseEntered(e ->{

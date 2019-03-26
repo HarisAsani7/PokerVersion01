@@ -72,7 +72,7 @@
 }
 
 #controlArea {
-    -fx-spacing: 0.0px;
+    -fx-spacing: 10px;
     -fx-padding: 5.0px;
     -fx-border-color: black;
     -fx-border-width: 2.0px;
