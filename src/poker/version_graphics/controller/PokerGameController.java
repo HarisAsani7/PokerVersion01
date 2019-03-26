@@ -1,11 +1,14 @@
 package poker.version_graphics.controller;
 
 import javafx.animation.RotateTransition;
+import javafx.application.Preloader.ProgressNotification;
+import javafx.application.Preloader.StateChangeNotification;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.DeckOfCards;
@@ -77,5 +80,15 @@ public class PokerGameController {
     	view.getDealButton().setOnMouseExited(e ->{
     		view.getDealButton().setEffect(null);
     	});
+    }
+    
+    public void handleProgressNotification(ProgressNotification pn) {
+    	view.getProgressBar().setProgress(pn.getProgress());
+    }
+	
+    public void handleStateChangeNotification(StateChangeNotification evt) {
+    	if (evt.getType() == StateChangeNotification.Type.BEFORE_START) {
+    		view.getMyStage().hide();
+    	}
     }
 }

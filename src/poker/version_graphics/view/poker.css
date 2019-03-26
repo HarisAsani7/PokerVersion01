@@ -77,10 +77,12 @@
     -fx-border-color: black;
     -fx-border-width: 2.0px;
     -fx-text-fill: black;
+    -fx-background-color: white;
 }
 
 #cardDeck{
 	-fx-text-fill: black;
+	-fx-text-alignment: left;
 }
 
 #textCards{
