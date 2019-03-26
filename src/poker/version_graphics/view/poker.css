@@ -15,9 +15,13 @@
 	-fx-background-color: white;
 	-fx-font-color: black;
 	-fx-font-weight: bold;
+	-fx-padding: 5px;
 		
 }
-
+.button:hover {
+	-fx-background-color: grey;
+	-fx-border-radius: 20px;	
+}
 .menu-bar{
 	-fx-background-color: white;
 	-fx-min-height: 30px;
@@ -111,4 +115,19 @@
     -fx-min-height: 80;
     -fx-pref-height: 162;
     -fx-max-height: 800;
+}
+#Gridpane1 {
+	-fx-background-image: url(/poker/images/green.jpg);
+	-fx-text-fill: white;
+	-fx-padding: 5px;
+	-fx-font-size: 18px;
+	-fx-text-alignment: top-right;
+}
+#back {
+	-fx-padding: 5px;
+	-fx-alignment: bottom-right;
+	-fx-text-alignment: right;
+}
+#HandtypeStats {
+	-fx-font-size: 24px;
 }

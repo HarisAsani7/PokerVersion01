@@ -1,5 +1,7 @@
 package poker.version_graphics.controller;
 
+import com.sun.glass.ui.MenuItem;
+
 import javafx.animation.RotateTransition;
 import javafx.application.Preloader.ProgressNotification;
 import javafx.application.Preloader.StateChangeNotification;
@@ -20,6 +22,7 @@ import poker.version_graphics.view.PokerGameView;
 public class PokerGameController {
 	private PokerGameModel model;
 	private PokerGameView view;
+
 	
 	public PokerGameController(PokerGameModel model, PokerGameView view) {
 		this.model = model;
@@ -59,13 +62,13 @@ public class PokerGameController {
     private void deal() {
     	int cardsRequired = PokerGame.NUM_PLAYERS * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
-//    	Player winner = model.getPlayer(0);
-//    	Player currentWinner = model.getPlayer(0);
+    	Player winner = model.getPlayer(0);
+    	Player currentWinner = model.getPlayer(0);
 //    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
 //    		model.getPlayer(i).evaluateHand().compareTo(model.getPlayer(i+1).evaluateHand());
 //    		
 //    	}
-    	view.getWinnerLabel().setText("Winner: Eren Aslan");
+    	view.getWinnerLabel().setText("Winner: " + model.getPlayer(2).getPlayerName());
     	if (cardsRequired <= deck.getCardsRemaining()) {
         	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
         		Player p = model.getPlayer(i);
