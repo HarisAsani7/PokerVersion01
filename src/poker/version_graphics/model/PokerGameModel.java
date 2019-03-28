@@ -10,7 +10,7 @@ import poker.version_graphics.view.PokerGameView;
 public class PokerGameModel {
 	private final ArrayList<Player> players = new ArrayList<>();
 	private DeckOfCards deck;
-	private Player player;
+	private Player currentWinner;
 	private PokerGameView view;
 	
 	public PokerGameModel() {
@@ -22,37 +22,24 @@ public class PokerGameModel {
 	}
 
 	
-//	ich wird do wahrschienlich e ladescreen hinzuefüege bevor poker überhaupt startet	
-//	final Task<Void> initializer = new Task<Void>() {
-//		protected Void call() throws Exception{
-//			Integer i = 0;
-//			for (; i<10000000; i++) {
-//				if((i%10000) == 0)
-//					this.updateProgress(i, 100000);
-//			}
-//			
-//			return null;
-//		}
-//	};
-//	
-//	public void initialize() {
-//		new Thred(initializer).start();
-//		
-//	}
 	  public void pickWinner() {
-			Player currentWinner = players.get(0);
-			for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-				if(currentWinner.compareTo(players.get(i)) < 0) {
-					currentWinner = players.get(i);
+			currentWinner = players.get(0);
+			for(int j = 0; j < PokerGame.NUM_PLAYERS; j++) {
+				if(currentWinner.compareTo(players.get(j)) < 0) {
+					currentWinner = players.get(j);
 
 				}	
 //				else  if (currentWinner.compareTo(players.get(i)) == 0){
 //						
 //					}    	
 			}
-			System.out.println(currentWinner.getPlayerName());
-//			view.getWinnerLabel().setText("Winner is: " + currentWinner.getPlayerName());
+//			System.out.println(currentWinner.getPlayerName());
 		}
+	  
+	public Player getCurrentPlayer() {
+		return currentWinner;
+	}
+	
 	  
 	public Player getPlayer(int i) {
 		return players.get(i);

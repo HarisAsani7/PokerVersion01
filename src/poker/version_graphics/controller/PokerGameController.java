@@ -78,7 +78,7 @@ public class PokerGameController {
         		pp.updatePlayerDisplay();
         	}
         	model.pickWinner();
-//        	view.getWinnerLabel().setText("Winner is: " + currentWinner.getPlayerName());
+        	view.getWinnerLabel().setText("Winner is: " + model.getCurrentPlayer().getPlayerName());
         	
         	} else {
     			view.getDealButton().setDisable(true);
