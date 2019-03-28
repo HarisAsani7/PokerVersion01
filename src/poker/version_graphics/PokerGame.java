@@ -1,5 +1,7 @@
 package poker.version_graphics;
 
+import com.sun.javafx.application.LauncherImpl;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import poker.version_graphics.controller.PokerGameController;
@@ -13,7 +15,8 @@ public class PokerGame extends Application {
 	PokerGameController controller;
 	
     public static void main(String[] args) {
-        launch();
+    	
+    	LauncherImpl.launchApplication(loadingScreen.class, args);
     }
 
     @Override

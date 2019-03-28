@@ -12,6 +12,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -29,23 +30,7 @@ import poker.version_graphics.view.*;
 public class PokerGameView {
 	private HBox players;
 	private ControlArea controls;
-	ProgressBar bar;
-	Stage myStage;
 	private PokerGameModel HandType;
-	
-	private Scene createLoadingScreen(){
-		bar = new ProgressBar();
-		BorderPane p = new BorderPane();
-		p.setCenter(bar);
-		return new Scene(p, 300, 150);
-		
-	}
-	
-	public void start (Stage myStage) throws Exception{
-		this.myStage = myStage;
-		myStage.setScene(createLoadingScreen());
-		myStage.show();
-	}
 
 	private PokerGameModel model;
 	
@@ -185,13 +170,6 @@ public class PokerGameView {
  
 	}
 	
-	public ProgressBar getProgressBar() {
-		return bar;
-	}
-	
-	public Stage getMyStage () {
-		return myStage;
-	}
 	public Label getWinnerLabel() {
 		return controls.winnerLabel;
 	}
