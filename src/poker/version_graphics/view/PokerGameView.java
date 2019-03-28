@@ -4,6 +4,7 @@ package poker.version_graphics.view;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.application.Preloader.ProgressNotification;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,6 +23,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import poker.version_graphics.PokerGame;
+import poker.version_graphics.controller.PokerGameController;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.Player;
 import poker.version_graphics.model.PokerGameModel;
@@ -29,10 +31,14 @@ import poker.version_graphics.view.*;
 
 public class PokerGameView {
 	private HBox players;
+	private HBox playersAdd;
 	private ControlArea controls;
 	private PokerGameModel HandType;
 	private MenuItem exit = new MenuItem("Exit Game");
 	private MenuItem statistics = new MenuItem("Statistics");
+	private Menu setPlayer;
+	private Menu cardDeck;
+	private Stage stage;
 
 	private PokerGameModel model;
 	
@@ -40,7 +46,17 @@ public class PokerGameView {
 		this.model = model;
 		// Create all of the player panes we need, and put them into an HBox
 		players = new HBox();
-		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+//		playersAdd = new HBox();
+//		
+//		players.setPadding(new Insets(10, 20, 0, 20));
+//		playersAdd.setPadding(new Insets(10, 20, 0, 20));
+//		playersAdd.setAlignment(Pos.CENTER_RIGHT);
+//		
+//		stage.setResizable(false);
+//		
+//		this.stage = stage;
+		
+		for (int i = 0; i < PokerGameController.NUM_PLAYERS; i++) {
 			PlayerPane pp = new PlayerPane();
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
@@ -52,8 +68,8 @@ public class PokerGameView {
 		
 		MenuBar menuBar = new MenuBar();
 		Menu setPlayer = new Menu("Player");
-		final int maxPlayer = 10;
-		final int maxCards = 4;
+		final int maxPlayer = 4;
+		final int maxCards = 2;
 		for (int i = 1; i <=maxPlayer; i++) {
 		MenuItem chosePlayer = new MenuItem("Player " + i);
 		setPlayer.getItems().add(chosePlayer);
@@ -172,10 +188,31 @@ public class PokerGameView {
 	public MenuItem getMenuItemExit() {
 		return exit;
 	}
+	
+//	public Menu getSetPlayer() {
+//		PlayerPane pp = new PlayerPane();
+//		pp.setPlayer(model.getPlayer(PokerGameController.NUM_PLAYERS));
+//		playersAdd.getChildren().add(pp);
+//		stage.sizeToScene();
+//		return setPlayer;
+//	}
+//	
+	public Menu getCardStyle() {
+		return cardDeck;
+	}
+	
+	
 //	public MenuItem getStatistics() {
 //		return statistics;
 //	}
 	public Label getWinnerLabel() {
 		return controls.winnerLabel;
 	}
+	
+//	public void addNewPlayer() {
+//		PlayerPane pp = new PlayerPane();
+//		pp.setPlayer(model.getPlayer(PokerGameController.NUM_PLAYERS));
+//		playersAdd.getChildren().add(pp);
+//		stage.sizeToScene();
+//	}
 }

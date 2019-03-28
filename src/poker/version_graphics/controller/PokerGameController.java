@@ -18,6 +18,8 @@ import poker.version_graphics.view.PlayerPane;
 import poker.version_graphics.view.PokerGameView;
 
 public class PokerGameController {
+	
+	public static int NUM_PLAYERS =2;
 	private PokerGameModel model;
 	private PokerGameView view;
 
@@ -29,6 +31,7 @@ public class PokerGameController {
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal());
 		view.getMenuItemExit().setOnAction(e -> exit());
+//		view.getSetPlayer().setOnAction(e -> player());
 //		view.getStatistics().setOnAction(e -> 
 	}
 
@@ -38,10 +41,20 @@ public class PokerGameController {
 	private void exit() {
 		System.exit(0);
 	}
+	
+//	public void player() {
+//		view.getSetPlayer();
+//	}
+	
+	public void cardStyle () {
+		
+	}
+	
+	
     private void shuffle() {
     	view.getWinnerLabel().setText("Winner: ");
     	view.getDealButton().setDisable(false);
-    	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+    	for (int i = 0; i < NUM_PLAYERS; i++) {
     		Player p = model.getPlayer(i);
     		p.discardHand();
     		PlayerPane pp = view.getPlayerPane(i);
@@ -63,14 +76,14 @@ public class PokerGameController {
      * Deal each player five cards, then evaluate the two hands
      */
     private void deal() {
-    	int cardsRequired = PokerGame.NUM_PLAYERS * Player.HAND_SIZE;
+    	int cardsRequired = NUM_PLAYERS * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
     	
 
     	
     	if (cardsRequired <= deck.getCardsRemaining()) {
         	
-        	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+        	for (int i = 0; i < NUM_PLAYERS; i++) {
         		Player p = model.getPlayer(i);
         		p.discardHand();
         		for (int j = 0; j < Player.HAND_SIZE; j++) {

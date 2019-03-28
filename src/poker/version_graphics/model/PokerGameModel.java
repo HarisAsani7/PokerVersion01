@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import digitalExamClock.ServiceLocator;
 import javafx.concurrent.Task;
 import poker.version_graphics.PokerGame;
+import poker.version_graphics.controller.PokerGameController;
 import poker.version_graphics.view.PokerGameView;
 
 public class PokerGameModel {
@@ -14,7 +15,7 @@ public class PokerGameModel {
 	private PokerGameView view;
 	
 	public PokerGameModel() {
-		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+		for (int i = 0; i <= 4; i++) {
 			players.add(new Player("Player " + i));
 		}
 		
@@ -24,7 +25,7 @@ public class PokerGameModel {
 	
 	  public void pickWinner() {
 			currentWinner = players.get(0);
-			for(int j = 0; j < PokerGame.NUM_PLAYERS; j++) {
+			for(int j = 0; j < PokerGameController.NUM_PLAYERS; j++) {
 				if(currentWinner.compareTo(players.get(j)) < 0) {
 					currentWinner = players.get(j);
 
