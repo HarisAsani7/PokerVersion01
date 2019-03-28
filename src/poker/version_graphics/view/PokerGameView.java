@@ -29,7 +29,6 @@ import poker.version_graphics.view.*;
 public class PokerGameView {
 	private HBox players;
 	private ControlArea controls;
-	public Label lblWinner = new Label("");
 	ProgressBar bar;
 	Stage myStage;
 	private PokerGameModel HandType;
@@ -194,6 +193,6 @@ public class PokerGameView {
 		return myStage;
 	}
 	public Label getWinnerLabel() {
-		return controls.winner;
+		return controls.winnerLabel;
 	}
 }

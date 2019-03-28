@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import digitalExamClock.ServiceLocator;
 import javafx.concurrent.Task;
 import poker.version_graphics.PokerGame;
+import poker.version_graphics.view.PokerGameView;
 
 public class PokerGameModel {
 	private final ArrayList<Player> players = new ArrayList<>();
 	private DeckOfCards deck;
+	private Player player;
+	private PokerGameView view;
 	
 	public PokerGameModel() {
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
@@ -36,11 +39,24 @@ public class PokerGameModel {
 //		new Thred(initializer).start();
 //		
 //	}
-//	
+	  public void pickWinner() {
+			Player winner = players.get(0);
+			Player currentWinner = players.get(0);
+			for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+				if(currentWinner.evaluateHand().compareTo(players.get(0).evaluateHand()) < 0) {
+					currentWinner = players.get(i+1);
+				}	else  {
+						currentWinner = players.get(i);
+					}    	
+			}
+			winner = currentWinner;
+			view.getWinnerLabel().setText("Winner: " + winner.getPlayerName());
+		}
+
 	public Player getPlayer(int i) {
 		return players.get(i);
 	}
-	
+
 	public DeckOfCards getDeck() {
 		return deck;
 	}

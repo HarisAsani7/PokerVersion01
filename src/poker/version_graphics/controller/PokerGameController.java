@@ -1,7 +1,5 @@
 package poker.version_graphics.controller;
 
-import com.sun.glass.ui.MenuItem;
-
 import javafx.animation.RotateTransition;
 import javafx.application.Preloader.ProgressNotification;
 import javafx.application.Preloader.StateChangeNotification;
@@ -29,7 +27,7 @@ public class PokerGameController {
 		this.view = view;
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
-		view.getDealButton().setOnAction( e -> deal() );
+		view.getDealButton().setOnAction( e -> deal());
 	}
 
     /**
@@ -55,6 +53,19 @@ public class PokerGameController {
     		view.getShuffleButton().setEffect(null);
     	});
     }
+//    public void pickWinner() {
+//    	Player winner = model.getPlayer(0);
+//    	Player currentWinner = model.getPlayer(0);
+//    	for(int i = 0; i <= PokerGame.NUM_PLAYERS; i++) {
+//    		if(currentWinner.evaluateHand().compareTo(model.getPlayer(i+1).evaluateHand()) < 0) {
+//    			currentWinner = model.getPlayer(i+1);
+//    		}	else  {
+//    				currentWinner = model.getPlayer(i);
+//    			}    	
+//    	}
+//    	winner = currentWinner;
+//    	view.getWinnerLabel().setText("Winner: " + winner);
+//    }
     
     /**
      * Deal each player five cards, then evaluate the two hands
@@ -62,13 +73,7 @@ public class PokerGameController {
     private void deal() {
     	int cardsRequired = PokerGame.NUM_PLAYERS * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
-    	Player winner = model.getPlayer(0);
-    	Player currentWinner = model.getPlayer(0);
-//    	for(int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
-//    		model.getPlayer(i).evaluateHand().compareTo(model.getPlayer(i+1).evaluateHand());
-//    		
-//    	}
-    	view.getWinnerLabel().setText("Winner: " + model.getPlayer(2).getPlayerName());
+    	
     	if (cardsRequired <= deck.getCardsRemaining()) {
         	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
         		Player p = model.getPlayer(i);
@@ -81,11 +86,13 @@ public class PokerGameController {
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
         	}
-    	} else {
+        	model.pickWinner();
+        	} else {
     			view.getDealButton().setDisable(true);
 //            Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
 //            alert.showAndWait();
     	}
+    	
     	DropShadow shadow = new DropShadow();
     	view.getDealButton().setOnMouseEntered(e ->{
     		view.getDealButton().setEffect(shadow);
@@ -93,7 +100,11 @@ public class PokerGameController {
     	view.getDealButton().setOnMouseExited(e ->{
     		view.getDealButton().setEffect(null);
     	});
+    	
     }
+    	
+
+
     
     public void handleProgressNotification(ProgressNotification pn) {
     	view.getProgressBar().setProgress(pn.getProgress());

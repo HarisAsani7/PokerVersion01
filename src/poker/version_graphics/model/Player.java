@@ -49,6 +49,7 @@ public class Player implements Comparable<Player> {
 //	if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.Five));   
 }
     
+    
     public void discardHand() {
         cards.clear();
         handType = null;
