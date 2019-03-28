@@ -15,8 +15,9 @@ public class PokerGame extends Application {
 	PokerGameController controller;
 	
     public static void main(String[] args) {
-    	
-    	LauncherImpl.launchApplication(loadingScreen.class, args);
+  
+    	launch(args);
+//    	LauncherImpl.launchApplication(loadingScreen.class, args);
     }
 
     @Override

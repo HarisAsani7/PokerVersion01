@@ -15,15 +15,15 @@ public class ControlArea extends HBox{
     Button btnShuffle = new Button("Shuffle");
     Button btnDeal = new Button("Deal");
     Label text = new Label("Remaining Cards: ");
-    Label winner = new Label("Winner: ");
+    Label winnerLabel = new Label("Winner: ");
     
     public ControlArea() {
     	super(); // Always call super-constructor first !!
     	
-    	this.getChildren().addAll(text, lblDeck, winner, spacer, btnShuffle, btnDeal);
+    	this.getChildren().addAll(text, lblDeck, winnerLabel, spacer, btnShuffle, btnDeal);
     	spacer.setId("spacer");
     	text.setId("textCards");
-    	winner.setId("winner");
+    	winnerLabel.setId("winner");
     	lblDeck.setId("cardDeck");
     	btnDeal.setId("Deal");
     	btnShuffle.setId("Shuffle");
