@@ -53,19 +53,6 @@ public class PokerGameController {
     		view.getShuffleButton().setEffect(null);
     	});
     }
-//    public void pickWinner() {
-//    	Player winner = model.getPlayer(0);
-//    	Player currentWinner = model.getPlayer(0);
-//    	for(int i = 0; i <= PokerGame.NUM_PLAYERS; i++) {
-//    		if(currentWinner.evaluateHand().compareTo(model.getPlayer(i+1).evaluateHand()) < 0) {
-//    			currentWinner = model.getPlayer(i+1);
-//    		}	else  {
-//    				currentWinner = model.getPlayer(i);
-//    			}    	
-//    	}
-//    	winner = currentWinner;
-//    	view.getWinnerLabel().setText("Winner: " + winner);
-//    }
     
     /**
      * Deal each player five cards, then evaluate the two hands
@@ -74,7 +61,10 @@ public class PokerGameController {
     	int cardsRequired = PokerGame.NUM_PLAYERS * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
     	
+
+    	
     	if (cardsRequired <= deck.getCardsRemaining()) {
+        	
         	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
         		Player p = model.getPlayer(i);
         		p.discardHand();
@@ -83,10 +73,13 @@ public class PokerGameController {
         			p.addCard(card);
         		}
         		p.evaluateHand();
+        		
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
         	}
         	model.pickWinner();
+//        	view.getWinnerLabel().setText("Winner is: " + currentWinner.getPlayerName());
+        	
         	} else {
     			view.getDealButton().setDisable(true);
 //            Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
@@ -100,19 +93,6 @@ public class PokerGameController {
     	view.getDealButton().setOnMouseExited(e ->{
     		view.getDealButton().setEffect(null);
     	});
-    	
-    }
-    	
 
-
-    
-    public void handleProgressNotification(ProgressNotification pn) {
-    	view.getProgressBar().setProgress(pn.getProgress());
-    }
-	
-    public void handleStateChangeNotification(StateChangeNotification evt) {
-    	if (evt.getType() == StateChangeNotification.Type.BEFORE_START) {
-    		view.getMyStage().hide();
-    	}
     }
 }
