@@ -31,6 +31,8 @@ public class PokerGameView {
 	private HBox players;
 	private ControlArea controls;
 	private PokerGameModel HandType;
+	private MenuItem exit = new MenuItem("Exit Game");
+	private MenuItem statistics = new MenuItem("Statistics");
 
 	private PokerGameModel model;
 	
@@ -62,15 +64,13 @@ public class PokerGameView {
 			cardDeck.getItems().add(choseCards);
 		}
 		Menu info = new Menu ("Options");
-		MenuItem exit = new MenuItem("Exit Game");
+		
 		MenuItem infoCards = new MenuItem("Card explained");
-		MenuItem statistics = new MenuItem("Statistics");
+
 		info.getItems().addAll(exit, infoCards, statistics);
 		menuBar.getMenus().addAll(setPlayer, cardDeck, info);
 		
-		exit.setOnAction(e ->{
-			System.exit(0);
-		});
+
 		statistics.setOnAction(e -> {
 			
 			Label HandtypeStats = new Label("Handtype");
@@ -169,7 +169,12 @@ public class PokerGameView {
 		return controls.btnDeal; 
  
 	}
-	
+	public MenuItem getMenuItemExit() {
+		return exit;
+	}
+//	public MenuItem getStatistics() {
+//		return statistics;
+//	}
 	public Label getWinnerLabel() {
 		return controls.winnerLabel;
 	}

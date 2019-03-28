@@ -28,11 +28,16 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal());
+		view.getMenuItemExit().setOnAction(e -> exit());
+//		view.getStatistics().setOnAction(e -> 
 	}
 
     /**
      * Remove all cards from players hands, and shuffle the deck
      */
+	private void exit() {
+		System.exit(0);
+	}
     private void shuffle() {
     	view.getWinnerLabel().setText("Winner: ");
     	view.getDealButton().setDisable(false);
