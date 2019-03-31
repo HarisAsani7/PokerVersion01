@@ -14,11 +14,7 @@ public class PokerGame extends Application {
 	PokerGameView view;
 	PokerGameController controller;
 	
-    public static void main(String[] args) {
-  
-    	launch(args);
-//    	LauncherImpl.launchApplication(loadingScreen.class, args);
-    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
