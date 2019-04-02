@@ -97,7 +97,6 @@ public class PokerGameController {
         	}
         	model.pickWinner();
         	view.getWinnerLabel().setText("Winner is: " + model.getCurrentPlayer().getPlayerName());
-        	
         	} else {
     			view.getDealButton().setDisable(true);
 //            Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");

@@ -14,7 +14,7 @@ public class PlayerPane extends VBox {
     private Label lblName = new Label();
     private HBox hboxCards = new HBox();
     private Label lblEvaluation = new Label("--");
-    
+//    private Label winCounter = new Label("Wins: ");
     // Link to player object
     private Player player;
     
@@ -51,4 +51,5 @@ public class PlayerPane extends VBox {
 
     	}
     }
+
 }

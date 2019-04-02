@@ -2,9 +2,11 @@ package poker.version_graphics.model;
 
 import java.util.ArrayList;
 
+import javafx.scene.control.Label;
+import poker.version_graphics.view.PokerGameView;
+
 public class Player implements Comparable<Player> {
     public static final int HAND_SIZE = 5;
-    
     private final String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
@@ -20,6 +22,11 @@ public class Player implements Comparable<Player> {
     public ArrayList<Card> getCards() {
         return cards;
     }
+//    public int addWin() {
+//    	int wins = 0;
+//    	wins++;
+//    	return wins;
+//    }
     
     public void addCard(Card card) {
     	if (cards.size() < HAND_SIZE) cards.add(card);
@@ -58,6 +65,7 @@ public class Player implements Comparable<Player> {
     public int getNumCards() {
         return cards.size();
     }
+
 
     /**
      * If the hand has not been evaluated, but does have all cards, 
