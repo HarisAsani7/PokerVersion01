@@ -39,6 +39,8 @@ public class PokerGameView {
 	private Menu setPlayer;
 	private Menu cardDeck;
 	private Stage stage;
+	private PlayerPane pp;
+	Label winCounter;
 
 	private PokerGameModel model;
 	
@@ -62,6 +64,7 @@ public class PokerGameView {
 			players.getChildren().add(pp);
 			
 		}
+		pp = new PlayerPane();
 		// Create the control area
 		controls = new ControlArea();
 		controls.linkDeck(model.getDeck()); // link DeckLabel to DeckOfCards in the logic
@@ -207,6 +210,9 @@ public class PokerGameView {
 //	}
 	public Label getWinnerLabel() {
 		return controls.winnerLabel;
+	}
+	public Label getWinCounter() {
+		return pp.winCounter;
 	}
 	
 //	public void addNewPlayer() {

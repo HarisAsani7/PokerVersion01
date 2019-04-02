@@ -50,7 +50,9 @@ public class PokerGameController {
 		
 	}
 	
-	
+//	private void getStatistics() {
+//		
+//	}
     private void shuffle() {
     	view.getWinnerLabel().setText("Winner: ");
     	view.getDealButton().setDisable(false);
@@ -97,6 +99,10 @@ public class PokerGameController {
         	}
         	model.pickWinner();
         	view.getWinnerLabel().setText("Winner is: " + model.getCurrentPlayer().getPlayerName());
+         	int wins = model.getCurrentPlayer().getWins();
+        	view.getWinCounter().setText("Wins: " + String.valueOf(wins));
+        	System.out.println("Wins: " + model.getCurrentPlayer().getWins());
+        	
         	} else {
     			view.getDealButton().setDisable(true);
 //            Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");

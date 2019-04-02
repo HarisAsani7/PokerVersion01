@@ -34,8 +34,8 @@ public class PokerGameModel {
 //						
 //					}    	
 			}
-//			currentWinner.addWin();
-//			System.out.println(currentWinner.getPlayerName());
+			currentWinner.addWins(1);
+			System.out.println(currentWinner.getPlayerName());
 		}
 	  
 	public Player getCurrentPlayer() {

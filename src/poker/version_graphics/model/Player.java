@@ -10,6 +10,7 @@ public class Player implements Comparable<Player> {
     private final String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
+    int wins;
     
     public Player(String playerName) {
         this.playerName = playerName;
@@ -22,9 +23,10 @@ public class Player implements Comparable<Player> {
     public ArrayList<Card> getCards() {
         return cards;
     }
-//    public int addWin() {
-//    	int wins = 0;
+
+//    public int addWin(int wins) {
 //    	wins++;
+//    	System.out.println(wins);
 //    	return wins;
 //    }
     
@@ -57,7 +59,14 @@ public class Player implements Comparable<Player> {
 }
     
     
-    public void discardHand() {
+    public void addWins(int wins) {
+		this.wins += wins;
+	}
+    
+    public int getWins() {
+    	return wins;
+    }
+	public void discardHand() {
         cards.clear();
         handType = null;
     }
