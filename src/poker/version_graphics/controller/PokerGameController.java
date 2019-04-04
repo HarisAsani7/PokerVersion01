@@ -100,8 +100,16 @@ public class PokerGameController {
         	model.pickWinner();
         	view.getWinnerLabel().setText("Winner is: " + model.getCurrentPlayer().getPlayerName());
          	int wins = model.getCurrentPlayer().getWins();
-        	view.getWinCounter().setText("Wins: " + String.valueOf(wins));
-        	System.out.println("Wins: " + model.getCurrentPlayer().getWins());
+
+         	for(int i = 0; i < NUM_PLAYERS; i++) {
+         		
+         		PlayerPane pp = view.getPlayerPane(i);
+         		Player player = model.getCurrentPlayer();
+         		if(model.getPlayer(i)== model.getCurrentPlayer()) {
+         	}
+         	}
+//         	view.getWinCounter().setText("Wins: " + String.valueOf(wins));
+//        	System.out.println("Wins: " + model.getCurrentPlayer().getWins());
         	
         	} else {
     			view.getDealButton().setDisable(true);
