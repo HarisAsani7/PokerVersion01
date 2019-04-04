@@ -1,7 +1,6 @@
 package poker.version_graphics;
 
 import javafx.application.Preloader;
-import javafx.application.Preloader.StateChangeNotification;
 import javafx.application.Preloader.StateChangeNotification.Type;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;

@@ -10,6 +10,7 @@ public class Player implements Comparable<Player> {
     private final String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
+    private Integer NumericHandType;
     int wins;
     
     public Player(String playerName) {
@@ -19,16 +20,15 @@ public class Player implements Comparable<Player> {
     public String getPlayerName() {
         return playerName;
     }
+    
+    public int getWinsOrdinal() {
+    	NumericHandType = handType.ordinal();
+    	return NumericHandType;
+    }
 
     public ArrayList<Card> getCards() {
         return cards;
     }
-
-//    public int addWin(int wins) {
-//    	wins++;
-//    	System.out.println(wins);
-//    	return wins;
-//    }
     
     public void addCard(Card card) {
     	if (cards.size() < HAND_SIZE) cards.add(card);
@@ -94,4 +94,9 @@ public class Player implements Comparable<Player> {
     public int compareTo(Player o) {
         return handType.compareTo(o.handType);
     }
+    
+    public String toString() {
+    	return playerName;
+    }
+    
 }

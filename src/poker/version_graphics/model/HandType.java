@@ -158,4 +158,6 @@ public enum HandType {
     	}
     	return straightflush;       
     }
-}
+    
+   }
+
